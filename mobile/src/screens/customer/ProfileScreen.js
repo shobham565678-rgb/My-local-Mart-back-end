@@ -1,0 +1,79 @@
+import React from 'react';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { useTheme } from '../../contexts/ThemeContext';
+import { useAuth } from '../../contexts/AuthContext';
+
+const ProfileScreen = () => {
+  const { theme } = useTheme();
+  const { user, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+  };
+
+  return (
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+      <View style={styles.content}>
+        <Text style={[styles.title, { color: theme.colors.text }]}>
+          Profile Screen
+        </Text>
+        <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>
+          Welcome, {user?.profile?.firstName || 'User'}!
+        </Text>
+        <TouchableOpacity
+          style={[styles.logoutButton, { backgroundColor: theme.colors.error }]}
+          onPress={handleLogout}
+        >
+          <Text style={[styles.logoutButtonText, { color: theme.colors.white }]}>
+            Logout
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 30,
+  },
+  logoutButton: {
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    borderRadius: 8,
+  },
+  logoutButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
+
+export default ProfileScreen;
+
+
+
+
+
+
+
+
+
+
+
+

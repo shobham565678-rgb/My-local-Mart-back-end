@@ -1,0 +1,23 @@
+{
+  "name": "mylocalmart",
+  "version": "1.0.0",
+  "description": "MyLocalMart - Neighborhood shop marketplace app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run mobile:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "mobile:dev": "cd mobile && npm start",
+    "backend:install": "cd backend && npm install",
+    "mobile:install": "cd mobile && npm install",
+    "install:all": "npm run backend:install && npm run mobile:install"
+  },
+  "keywords": ["react-native", "expo", "mongodb", "marketplace", "ecommerce"],
+  "author": "MyLocalMart Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
+
+
